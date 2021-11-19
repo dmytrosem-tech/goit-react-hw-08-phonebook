@@ -1,27 +1,32 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as phoneBookAPI from "../../services/phonebook-api";
+import * as actualAPI from "../../services/api-store";
 
 //---------------------------------------------asyncThunk----------------------------------------------//
-export const fetchContact = createAsyncThunk(
+const fetchContact = createAsyncThunk(
   "contacts/fetchContactsGlobal",
   async () => {
-    const contacts = await phoneBookAPI.fetchContactsAsync();
+    const contacts = await actualAPI.fetchContactsAsync();
     return contacts;
   }
 );
 
-export const addContact = createAsyncThunk(
-  "contacts/сontactsGlobal",
-  async (cont) => {
-    const contacts = await phoneBookAPI.addContactAsync(cont);
-    return contacts;
-  }
-);
+const addContact = createAsyncThunk("contacts/сontactsGlobal", async (cont) => {
+  const contacts = await actualAPI.addContactAsync(cont);
+  return contacts;
+});
 
-export const deleteContact = createAsyncThunk(
+const deleteContact = createAsyncThunk(
   "contacts/deleteContactGlobal",
   async (id) => {
-    await phoneBookAPI.deleteContactsAsync(id);
+    await actualAPI.deleteContactsAsync(id);
     return id;
   }
 );
+
+const contactsOperations = {
+  deleteContact,
+  fetchContact,
+  addContact,
+};
+
+export default contactsOperations;

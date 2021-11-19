@@ -2,6 +2,16 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
+export async function regUserAsync() {
+  const { data } = await axios.post("users/signup");
+  return data;
+}
+
+export async function logInUserAsync() {
+  const { data } = await axios.post("users/login");
+  return data;
+}
+
 export async function fetchContactsAsync() {
   const { data } = await axios.get("/contacts");
   return data;

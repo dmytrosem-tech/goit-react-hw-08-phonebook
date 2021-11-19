@@ -1,30 +1,36 @@
+import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
 import { changeFilter } from "./phonebook-actions";
-import {
-  fetchContact,
-  addContact,
-  deleteContact,
-} from "./phonebook-operations";
+import contactsOperations from "./phonebook-operations";
 
-export const contactsList = createReducer([], {
-  [fetchContact.fulfilled]: (_, { payload }) => payload,
-  [addContact.fulfilled]: (state, { payload }) => [...state, payload],
-  [deleteContact.fulfilled]: (state, { payload }) =>
+const contactsList = createReducer([], {
+  [contactsOperations.fetchContact.fulfilled]: (_, { payload }) => payload,
+  [contactsOperations.addContact.fulfilled]: (state, { payload }) => [
+    ...state,
+    payload,
+  ],
+  [contactsOperations.deleteContact.fulfilled]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
-export const loading = createReducer(false, {
-  [fetchContact.pending]: () => true,
-  [fetchContact.fulfilled]: () => false,
-  [fetchContact.rejected]: () => false,
-  [addContact.pending]: () => true,
-  [addContact.fulfilled]: () => false,
-  [addContact.rejected]: () => false,
-  [deleteContact.pending]: () => true,
-  [deleteContact.fulfilled]: () => false,
-  [deleteContact.rejected]: () => false,
+const loading = createReducer(false, {
+  [contactsOperations.fetchContact.pending]: () => true,
+  [contactsOperations.fetchContact.fulfilled]: () => false,
+  [contactsOperations.fetchContact.rejected]: () => false,
+  [contactsOperations.addContact.pending]: () => true,
+  [contactsOperations.addContact.fulfilled]: () => false,
+  [contactsOperations.addContact.rejected]: () => false,
+  [contactsOperations.deleteContact.pending]: () => true,
+  [contactsOperations.deleteContact.fulfilled]: () => false,
+  [contactsOperations.deleteContact.rejected]: () => false,
 });
 
-export const contactsFilter = createReducer("", {
+const contactsFilter = createReducer("", {
   [changeFilter]: (_, { payload }) => payload,
+});
+
+export default combineReducers({
+  contactsFilter,
+  loading,
+  contactsList,
 });
