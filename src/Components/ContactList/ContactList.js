@@ -2,12 +2,11 @@ import React from "react";
 import ContactItem from "../ContactItem";
 import styles from "./ContactList.module.css";
 import { useSelector } from "react-redux";
-import { getContacts, getFilter } from "../../redux/Phonebook/selectors";
-// import { connect } from "react-redux";
+import { contactsSelectors } from "../../redux/Phonebook";
 
 export default function ContactList() {
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
+  const contacts = useSelector(contactsSelectors.getContacts);
+  const filter = useSelector(contactsSelectors.getFilter);
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLowerCase();

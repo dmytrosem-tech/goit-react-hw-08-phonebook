@@ -5,7 +5,7 @@ import { authOperations } from "../redux/auth";
 
 export default function RegisterView() {
   const [name, setName] = useState("");
-  const [mail, setMail] = useState("");
+  const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
@@ -24,26 +24,27 @@ export default function RegisterView() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authOperations.register({ name, mail, password }));
+    dispatch(authOperations.register({ name, email, password }));
     setName("");
     setMail("");
     setPassword("");
   };
 
-  render(
+  return (
     <div>
       <h1>Registration page</h1>
       <form className="form" autoComplete="off" onSubmit={handleSubmit}>
         <label className="form__label">
+          name
           <input type="text" name="name" value={name} onChange={handleChange} />
         </label>
 
         <label className="form__label">
-          mail
+          email
           <input
             type="text"
             name="email"
-            value={mail}
+            value={email}
             onChange={handleChange}
           />
         </label>
@@ -52,8 +53,8 @@ export default function RegisterView() {
           password
           <input
             type="password"
-            name={password}
-            value="p"
+            name="password"
+            value={password}
             onChange={handleChange}
           />
         </label>

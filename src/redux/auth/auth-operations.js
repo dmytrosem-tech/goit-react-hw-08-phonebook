@@ -4,7 +4,7 @@ import * as actualAPI from "../../services/api-store";
 
 const token = {
   set(token) {
-    axios.defaults.header.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
     axios.defaults.headers.common.Authorization = "";
@@ -12,9 +12,11 @@ const token = {
 };
 
 const register = createAsyncThunk("auth/register", async (userReg) => {
+  console.log(userReg);
   try {
-    const { data } = await actualAPI.regUserAsync(userReg);
+    const { data } = await axios.post("users/signup", userReg);
     token.set(data.token);
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -23,7 +25,7 @@ const register = createAsyncThunk("auth/register", async (userReg) => {
 
 const logIn = createAsyncThunk("auth/login", async (userLogIn) => {
   try {
-    const { data } = await actualAPI.logInUserAsync(userLogIn);
+    const { data } = await axios.post("users/login", userLogIn);
     token.set(data.token);
     return data;
   } catch (error) {

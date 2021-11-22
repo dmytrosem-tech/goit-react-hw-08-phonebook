@@ -16,15 +16,20 @@ const styles = {
 
 const Navigation = () => (
   <nav>
-    <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
+    <NavLink
+      to="/"
+      exact="true"
+      style={styles.link}
+      activestyle={styles.activeLink}
+    >
       Main
     </NavLink>
 
     <NavLink
       to="/contacts"
-      exact
+      exact="true"
       style={styles.link}
-      activeStyle={styles.activeLink}
+      activestyle={styles.activeLink}
     >
       Contacts
     </NavLink>

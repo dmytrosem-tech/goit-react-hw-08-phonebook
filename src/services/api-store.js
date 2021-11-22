@@ -2,8 +2,8 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
-export async function regUserAsync() {
-  const { data } = await axios.post("users/signup");
+export async function regUserAsync(o) {
+  const { data } = await axios.post("users/signup", o);
   return data;
 }
 

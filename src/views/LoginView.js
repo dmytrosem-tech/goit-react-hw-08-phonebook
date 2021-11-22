@@ -35,14 +35,14 @@ export default function LoginView() {
           <input
             className="form__input"
             type="email"
-            name="password"
+            name="email"
             value={mail}
             onChange={handleChange}
           />
         </label>
 
         <label className="form__label">
-          Mail
+          Password
           <input
             className="form__input"
             type="password"
