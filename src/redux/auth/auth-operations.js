@@ -33,9 +33,9 @@ const logIn = createAsyncThunk("auth/login", async (userLogIn) => {
   }
 });
 
-const logOut = createAsyncThunk("auth/logout", async (userLogOut) => {
+const logOut = createAsyncThunk("auth/logout", async () => {
   try {
-    await actualAPI.logInUserAsync(userLogOut);
+    await axios.post("/users/logout");
     token.unset();
   } catch (error) {
     console.log(error);
@@ -57,7 +57,7 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get("/users/current");
       return data;
     } catch (error) {
-      // TODO: Добавить обработку ошибки error.message
+      console.log(error);
     }
   }
 );

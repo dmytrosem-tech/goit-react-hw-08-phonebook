@@ -3,14 +3,14 @@ import { useDispatch } from "react-redux";
 import { authOperations } from "../redux/auth";
 
 export default function LoginView() {
-  const [mail, setMail] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case "email":
-        return setMail(value);
+        return setEmail(value);
       case "password":
         return setPassword(value);
       default:
@@ -20,8 +20,8 @@ export default function LoginView() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authOperations.logIn({ mail, password }));
-    setMail("");
+    dispatch(authOperations.logIn({ email, password }));
+    setEmail("");
     setPassword("");
   };
 
@@ -36,7 +36,7 @@ export default function LoginView() {
             className="form__input"
             type="email"
             name="email"
-            value={mail}
+            value={email}
             onChange={handleChange}
           />
         </label>

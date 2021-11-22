@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/Phonebook/phonebook-actions";
 import styles from "./Filter.module.css";
-// import { connect } from "react-redux";
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -27,13 +26,3 @@ export default function Filter() {
     </div>
   );
 }
-
-// const mapStateToProps = (state) => ({
-//   filter: state.phonebookContacts.contactsFilter,
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   onChange1: (e) => dispatch(changeFilter(e)),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Filter);

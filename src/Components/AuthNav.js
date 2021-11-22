@@ -10,7 +10,7 @@ export default function AuthNav() {
         style={{ fontSize: 10 }}
         activestyle="nav__linkActv"
       >
-        Регистрация
+        Registration
       </NavLink>
       <NavLink
         to="/login"
@@ -18,7 +18,7 @@ export default function AuthNav() {
         style={{ fontSize: 10 }}
         activestyle="nav__linkActv"
       >
-        Логин
+        Login
       </NavLink>
     </div>
   );

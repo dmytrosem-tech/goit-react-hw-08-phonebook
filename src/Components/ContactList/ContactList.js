@@ -23,10 +23,3 @@ export default function ContactList() {
     </ul>
   );
 }
-
-// const mapStateToProps = (state) => ({
-//   contacts: state.contactsList,
-//   filter: state.contactsFilter,
-// });
-
-// export default connect(mapStateToProps, null)(ContactList);
