@@ -2,7 +2,7 @@ import { useEffect, Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import AppBar from "./Components/AppBar";
-import Container from "./Components/Container";
+// import Container from "./Components/Container";
 import PrivateRoute from "./Components/PrivateRoute";
 import PublicRoute from "./Components/PublicRoute";
 import { authOperations } from "./redux/auth";
@@ -20,7 +20,7 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <Container>
+    <div className="container">
       <AppBar />
 
       <Suspense fallback="Wreally?)))">
@@ -63,6 +63,6 @@ export default function App() {
           ></Route>
         </Routes>
       </Suspense>
-    </Container>
+    </div>
   );
 }
