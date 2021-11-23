@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import { contactsFilter, contactsList } from "./Phonebook/phonebook-reducer";
-import logger from "redux-logger";
+// import { combineReducers } from "redux";
+// import { contactsFilter, contactsList } from "./Phonebook/phonebook-reducer";
+// import logger from "redux-logger";
 
 import {
   persistStore,

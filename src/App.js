@@ -1,13 +1,16 @@
-import { useEffect, Suspense } from "react";
+import { useEffect, Suspense, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import AppBar from "./Components/AppBar";
 import Container from "./Components/Container";
-import ContactsView from "./views/ContactsView";
-import HomeView from "./views/HomeView";
-import RegisterView from "./views/RegisterView";
-import LoginView from "./views/LoginView";
+import PrivateRoute from "./Components/PrivateRoute";
+import PublicRoute from "./Components/PublicRoute";
 import { authOperations } from "./redux/auth";
+
+const ContactsView = lazy(() => import("./views/ContactsView"));
+const HomeView = lazy(() => import("./views/HomeView"));
+const RegisterView = lazy(() => import("./views/RegisterView"));
+const LoginView = lazy(() => import("./views/LoginView"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -22,10 +25,42 @@ export default function App() {
 
       <Suspense fallback="Wreally?)))">
         <Routes>
-          <Route exact path="/" element={<HomeView />} />
-          <Route exact path="/register" element={<RegisterView />} />
-          <Route exact path="/login" element={<LoginView />} />
-          <Route exact path="/contacts" element={<ContactsView />} />
+          <Route
+            exact="true"
+            path="/"
+            element={
+              <PublicRoute redirectTo="/">
+                <HomeView />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            exact="true"
+            path="/register"
+            restricted
+            element={
+              <PublicRoute restricted redirectTo="/contacts">
+                <RegisterView />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            exact="true"
+            path="/login"
+            element={
+              <PublicRoute restricted redirectTo="/contacts">
+                <LoginView />
+              </PublicRoute>
+            }
+          ></Route>
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login">
+                <ContactsView />
+              </PrivateRoute>
+            }
+          ></Route>
         </Routes>
       </Suspense>
     </Container>

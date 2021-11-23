@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as actualAPI from "../../services/api-store";
 
 const token = {
   set(token) {
@@ -16,7 +15,6 @@ const register = createAsyncThunk("auth/register", async (userReg) => {
   try {
     const { data } = await axios.post("users/signup", userReg);
     token.set(data.token);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -49,7 +47,6 @@ const fetchCurrentUser = createAsyncThunk(
     const persistedToken = state.auth.token;
 
     if (persistedToken === null) {
-      console.log("токена нет, уходим");
       return thunkAPI.rejectWithValue();
     }
     token.set(persistedToken);
