@@ -20,7 +20,7 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <div className="container">
+    <div className="contain">
       <AppBar />
 
       <Suspense fallback="Wreally?)))">
@@ -44,6 +44,7 @@ export default function App() {
               </PublicRoute>
             }
           ></Route>
+
           <Route
             exact="true"
             path="/login"

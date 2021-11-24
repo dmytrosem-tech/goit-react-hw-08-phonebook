@@ -7,33 +7,38 @@ const styles = {
     textDecoration: "none",
     padding: 12,
     fontWeight: 700,
-    color: "#2A363B",
+    color: "#ffffff",
   },
   activeLink: {
-    color: "#E84A5F",
+    color: "#808080",
   },
 };
 
 const Navigation = () => (
-  <nav>
-    <NavLink
-      to="/"
-      exact="true"
-      style={styles.link}
-      activestyle={styles.activeLink}
-    >
-      Main
-    </NavLink>
-
-    <NavLink
-      to="/contacts"
-      exact="true"
-      style={styles.link}
-      activestyle={styles.activeLink}
-    >
-      Contacts
-    </NavLink>
-  </nav>
+  <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <li>
+      <NavLink
+        to="/"
+        exact="true"
+        className="nav-link px-2 "
+        // style={styles.link}
+        // activestyle={styles.activeLink}
+      >
+        Main
+      </NavLink>
+    </li>
+    <li>
+      <NavLink
+        to="/contacts"
+        exact="true"
+        className="nav-link px-2 "
+        // style={styles.link}
+        // activestyle={styles.activeLink}
+      >
+        Contacts
+      </NavLink>
+    </li>
+  </ul>
 );
 
 export default Navigation;
