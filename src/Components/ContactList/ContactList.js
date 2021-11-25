@@ -16,10 +16,15 @@ export default function ContactList() {
   };
 
   return (
-    <ul className={styles.contacts__list}>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {getFilteredContacts().map(({ name, number, id }) => (
         <ContactItem key={id} name={name} number={number} id={id} />
       ))}
-    </ul>
+    </div>
+    // <ul className={styles.contacts__list}>
+    //   {getFilteredContacts().map(({ name, number, id }) => (
+    //     <ContactItem key={id} name={name} number={number} id={id} />
+    //   ))}
+    // </ul>
   );
 }

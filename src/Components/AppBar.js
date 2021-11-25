@@ -7,7 +7,7 @@ import { authSelectors } from "../redux/auth";
 export default function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <header className="header p-3 bg-dark text-white">
+    <header className="header p-2 bg-dark text-white">
       <div className="container">
         <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a

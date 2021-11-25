@@ -11,16 +11,16 @@ export default function AuthNav() {
         style={{ fontSize: 10 }}
         activestyle="nav__linkActv"
       >
-        Login
+        Sign in
       </NavLink>
       <NavLink
         to="/register"
         exact="true"
-        className="btn btn-warning"
+        className="btn btn-primary"
         style={{ fontSize: 10 }}
         activestyle="nav__linkActv"
       >
-        Sign-in
+        Sign up
       </NavLink>
     </div>
   );

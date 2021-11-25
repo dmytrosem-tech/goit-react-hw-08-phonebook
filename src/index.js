@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import "./index.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "./bootstrap-5.1.3-dist/css/bootstrap.css";
 import "modern-normalize/modern-normalize.css";
 
 ReactDOM.render(
