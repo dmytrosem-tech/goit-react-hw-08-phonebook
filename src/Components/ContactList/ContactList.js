@@ -1,8 +1,8 @@
 import React from "react";
 import ContactItem from "../ContactItem";
-import styles from "./ContactList.module.css";
 import { useSelector } from "react-redux";
 import { contactsSelectors } from "../../redux/Phonebook";
+// import styles from "./ContactList.module.css";
 
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getContacts);
@@ -16,15 +16,10 @@ export default function ContactList() {
   };
 
   return (
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {getFilteredContacts().map(({ name, number, id }) => (
         <ContactItem key={id} name={name} number={number} id={id} />
       ))}
     </div>
-    // <ul className={styles.contacts__list}>
-    //   {getFilteredContacts().map(({ name, number, id }) => (
-    //     <ContactItem key={id} name={name} number={number} id={id} />
-    //   ))}
-    // </ul>
   );
 }

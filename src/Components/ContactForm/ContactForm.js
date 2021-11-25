@@ -3,15 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { contactsSelectors } from "../../redux/Phonebook";
 import { contactsOperations } from "../../redux/Phonebook";
 import { v4 as uuid } from "uuid";
-import styles from "./ContactForm.module.css";
+// import styles from "./ContactForm.module.css";
 
 export default function ContactForm() {
-  const contName = uuid();
-  const contNumber = uuid();
-
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const [active] = useState(false);
+  // const [active] = useState(false);
   const contacts = useSelector(contactsSelectors.getContacts);
   const dispatch = useDispatch();
 
@@ -83,7 +80,24 @@ export default function ContactForm() {
         <label htmlFor="floatingPasswordInput">Contact number:</label>
       </div>
       <div className="checkbox mb-3"></div>
-      <button className="w-100 btn btn-lg btn-primary" type="submit">
+      <button
+        className="w-100 btn btn-lg btn-primary d-flex align-items-center justify-content-center"
+        type="submit"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          className="bi bi-person-plus mx-3"
+          viewBox="0 0 16 16"
+        >
+          <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+          <path
+            fillRule="evenodd"
+            d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+          />
+        </svg>
         Add contact
       </button>
       <hr className="my-4" />
@@ -91,40 +105,5 @@ export default function ContactForm() {
         check the correctness of the entered data*
       </small>
     </form>
-    // <form className={styles.form} onSubmit={handleSubmit}>
-    //   <label className={styles.form__label} htmlFor={contName}>
-    //     Contacts name:
-    //   </label>
-    //   <input
-    //     className={styles.form__input}
-    //     type="text"
-    //     id={contName}
-    //     name="name"
-    //     value={name}
-    //     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-    //     title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-    //     required
-    //     onChange={handleChangeAllInputs}
-    //     placeholder="Will Smith"
-    //   />
-    //   <label className={styles.form__label} htmlFor={contNumber}>
-    //     Contacts number:
-    //   </label>
-    //   <input
-    //     className={styles.form__input}
-    //     type="tel"
-    //     id={contNumber}
-    //     name="number"
-    //     value={number}
-    //     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-    //     title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-    //     required
-    //     onChange={handleChangeAllInputs}
-    //     placeholder="(097) 222-33-222"
-    //   />
-    //   <button className={styles.form__btn} type="submit" disabled={active}>
-    //     Add contact
-    //   </button>
-    // </form>
   );
 }

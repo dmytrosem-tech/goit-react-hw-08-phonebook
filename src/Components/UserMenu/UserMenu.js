@@ -9,7 +9,7 @@ export default function UserMenu() {
 
   return (
     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <img src={defaultAvatar} className="p-3" width="90" alt="bob" />
+      <img src={avatar} className="p-3" width="90" alt="bob" />
       <span className="p-3" style={{ fontSize: 15 }}>
         Welcome, {name}!
       </span>

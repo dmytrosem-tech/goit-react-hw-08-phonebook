@@ -58,7 +58,7 @@ export default function LoginView() {
                 name="password"
                 className="form-control"
                 id="floatingPassword"
-                value={email}
+                value={password}
                 onChange={handleChange}
                 placeholder="Password"
               />

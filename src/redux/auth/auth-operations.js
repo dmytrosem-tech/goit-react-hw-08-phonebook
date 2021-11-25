@@ -10,39 +10,48 @@ const token = {
   },
 };
 
-const register = createAsyncThunk("auth/register", async (userReg) => {
-  console.log(userReg);
-  try {
-    const { data } = await axios.post("users/signup", userReg);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error);
+const register = createAsyncThunk(
+  "auth/register",
+  async (userReg, { rejectWithValue }) => {
+    console.log(userReg);
+    try {
+      const { data } = await axios.post("users/signup", userReg);
+      token.set(data.token);
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
   }
-});
+);
 
-const logIn = createAsyncThunk("auth/login", async (userLogIn) => {
-  try {
-    const { data } = await axios.post("users/login", userLogIn);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error);
+const logIn = createAsyncThunk(
+  "auth/login",
+  async (userLogIn, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post("users/login", userLogIn);
+      token.set(data.token);
+      return data;
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
   }
-});
+);
 
-const logOut = createAsyncThunk("auth/logout", async () => {
-  try {
-    await axios.post("/users/logout");
-    token.unset();
-  } catch (error) {
-    console.log(error);
+const logOut = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post("/users/logout");
+      token.unset();
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
   }
-});
+);
 
 const fetchCurrentUser = createAsyncThunk(
   "auth/refresh",
-  async (_, thunkAPI) => {
+  async (_, thunkAPI, { rejectWithValue }) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
 
@@ -53,8 +62,8 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await axios.get("/users/current");
       return data;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      return rejectWithValue(err.message);
     }
   }
 );
