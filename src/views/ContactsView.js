@@ -9,9 +9,9 @@ export default function ContactsView() {
   const dispatch = useDispatch();
   useEffect(() => dispatch(contactsOperations.fetchContact()), [dispatch]);
   return (
-    <div className="container col-xl-10 col-xxl-8 px-4 py-5">
+    <div className="container col-xl-10 col-xxl-8 px-4  py-5">
       <div className="row align-items-start g-lg-5 py-5">
-        <h1 className="display-4 fw-bold lh-1 mb-3">Phonebook</h1>
+        <h1 className="display-4 fw-bold lh-1 mb-3">Phonebook </h1>
         <div className="col-md-10 mx-auto my-3 col-lg-5">
           <ContactForm />
         </div>
